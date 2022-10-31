@@ -1,3 +1,5 @@
+// this sketch depicts a thunderstorm scene. When the user clicks on the screen there lightening and sound of thunder.
+
 
 //Global variables
 let bg;
@@ -29,12 +31,16 @@ let raindrops20 = [];
 let raindrops21 = [];
 let raindrops22 = [];
 let light = [];
+let thunder;
 
 
-// Loading background image
+// Loading background image and audio file. 
+// Background image was taken from https://www.vecteezy.com/video/1625795-lightning-storm-time-lapse. 
+// Audio file was taken from https://www.youtube.com/watch?v=mF3ROkKc084&ab_channel=FreeifyMusic
 
 function preload(){
   bg = loadImage('lightning-storm.jpeg')
+  thunder = loadSound('Thunder Crack (320kbps).mp3');
 }
 
 
@@ -43,17 +49,18 @@ function preload(){
 function setup() {
   //createCanvas(1920,1080);960,540
   createCanvas(900,720);
-  // cloudy =  new cloud (250+x, 250+y, 30*random(5))
-  for (let i = 0; i < 30; i++){
+  // thunder.play()
+  
+  for (let i = 0; i < 50; i++){
     x = 30+random(0,800)
     y = 100+random(0,100)
     
-    
-  // clouds = new cloud(250, 250, 80);
     clouds[i] = new cloud(x, y, random(0,7)); 
     
   }
   
+  // Creating rain streams objects
+
   for (let i = 0; i<100; i++){
     raindrops[i] = new rain(150, 140, 5, 10)
     raindrops1[i] = new rain(200, 150, 5, 10)
@@ -80,6 +87,7 @@ function setup() {
     raindrops22[i] = new rain(0, 600, 5, 10)
   }
   
+  // Creating lightening array
   for (let i = 0; i<10; i++){
   light[i] = new lightening(600, 150, 215, random(0,350), 500, 700)
   }
@@ -95,9 +103,9 @@ function draw() {
   //   display clouds
   for (let i = 0; i < clouds.length; i++){
   clouds[i].drawCloud()
-  // cloudy.drawCloud()
+
   }
-  
+  // displaying rain
   
   for (let i = 0; i < raindrops.length; i++){
     raindrops[i].showRain()
@@ -126,7 +134,10 @@ function draw() {
     
 }
   
+// Adding user interaction, when mouse is pressed lightening strikes, clouds get enlarged and thunder sound plays.
+
   if (mouseIsPressed == true){
+  thunder.play()
   //   enlarge clouds
   for (let i = 0; i < random(5); i++){
   clouds[i].enlargeCloud()

@@ -1,5 +1,6 @@
 class lightening {
   
+  // this class creates lightening by connecting different lines, the positions of which are determined by the constructor.
     constructor(a, b, m, n, x, y) {
      this.a = a;
      this.b = b;
@@ -9,6 +10,8 @@ class lightening {
      this.y = y
    }
    
+  //  this function creates lightening streaks
+  
    createLight (){
      strokeWeight(6);
      // stroke(255, 0, 255);

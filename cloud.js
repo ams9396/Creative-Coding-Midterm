@@ -1,18 +1,21 @@
 
 class cloud {
   
+  // the constructor contains the position (x & y coordinates) and size of the clouds. Inspiration for the shape of the clouds was take from: https://editor.p5js.org/jackiezen/sketches/rJEziNOR
     constructor(x, y, size) {
       this.x = x;
       this.y = y;
       this.size = size;
     }
     
+
+    // this function draws the clouds as per the constructor inputs
     drawCloud() {
     
     fill(105,105,105,130);
     strokeWeight(0.5);
     stroke(120);
-    // ellipse(this.x, this.y, this.size, this.size)
+    
       
     arc(this.x, this.y, 20 *(this.size), 2*(this.size), PI + TWO_PI, TWO_PI, OPEN);
     arc(this.x+ 10, this.y, 25 * (this.size), 45 * (this.size), PI + TWO_PI, TWO_PI, OPEN);
@@ -24,7 +27,7 @@ class cloud {
       noStroke();
       
   }
-    
+    // this function increases the size of the clouds and changes their colour.
     enlargeCloud(){
   
       
